@@ -63,5 +63,18 @@ namespace ZangClass_Extension
             Bitmap bmpBitmap = new Bitmap(ms);
             return bmpBitmap;
         }
+
+        /// <summary>
+        /// تبدیل باینری به عکس به وسیله متغیر باینری
+        /// </summary>
+        /// <param name="pictur">ورودی عکس باینری</param>
+        /// <returns>خروجی عکس</returns>
+        public static Bitmap ConvertBinaryToBitmap(byte[] pictur)
+        {
+            if (pictur == null) return null;
+            var ms = new MemoryStream(pictur);
+            Bitmap bmpBitmap = new Bitmap(ms);
+            return bmpBitmap;
+        }
     }
 }
