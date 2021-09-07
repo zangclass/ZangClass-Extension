@@ -6,6 +6,11 @@ namespace ZangClass_Extension
 {
     public static class ConvertPersionString
     {
+        /// <summary>
+        /// حذف ک و ی عربی در متن
+        /// </summary>
+        /// <param name="text">ورودی متن</param>
+        /// <returns>حذف ک و ی عربی از متن</returns>
         public static string PersionString(this string text)
         {
             return text.Replace("ﮎ", "ک").
@@ -15,6 +20,12 @@ namespace ZangClass_Extension
                 Replace("ك", "ک").
                 Replace("ي", "ی");
         }
+        
+        /// <summary>
+        /// تبدیل عدد فارسی به انگلیسی
+        /// </summary>
+        /// <param name="text">ورودی اعداد</param>
+        /// <returns>حروجی اعداد انگلیسی</returns>
         public static string Fa2En(this string text)
         {
             return text.Replace("۰", "0").
@@ -29,6 +40,11 @@ namespace ZangClass_Extension
                 Replace("۹", "9");
         }
 
+        /// <summary>
+        /// تبدیل اعداد انگلیسی به فارسی
+        /// </summary>
+        /// <param name="text">ورودی اعداد انگلیسی</param>
+        /// <returns>خروجی اعداد فارسی</returns>
         public static string En2Fa(this string text)
         {
             return text.Replace("0", "۰").

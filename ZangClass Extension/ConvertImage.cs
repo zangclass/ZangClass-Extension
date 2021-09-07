@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -46,6 +47,21 @@ namespace ZangClass_Extension
                 // ignored
             }
             return buffer;
+        }
+
+        /// <summary>
+        /// تبدیل باینری به تصویر به وسیله داده هایی که در دیتاتیل وجود دارد
+        /// </summary>
+        /// <param name="dt">دیتاتیبلی که از بانک و یا هر جای دیگر پر شده</param>
+        /// <param name="row">سطر مورد نظری که عکس ان مورد نیاز است</param>
+        /// <param name="columnName">اسم ستون عکس در دیتاتیبل که باینری است</param>
+        /// <returns>خروجی یک عکس</returns>
+        public static Bitmap ConvertBinaryToBitmap(DataTable dt, int row, string columnName)
+        {
+            if (dt.Rows[row][columnName] == DBNull.Value) return null;
+            var ms = new MemoryStream((byte[])dt.Rows[row][columnName]);
+            Bitmap bmpBitmap = new Bitmap(ms);
+            return bmpBitmap;
         }
     }
 }
