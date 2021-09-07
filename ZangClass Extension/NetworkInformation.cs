@@ -19,5 +19,14 @@ namespace ZangClass_Extension
                 .AddressList.First(f => f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                 .ToString();
         }
+
+        /// <summary>
+        /// بدست آوردن نام کامپیوتر سیستم جاری
+        /// </summary>
+        /// <returns>خروجی نام کامپیوتر</returns>
+        public static string GetComputerName()
+        {
+            return Dns.GetHostName();
+        }
     }
 }
