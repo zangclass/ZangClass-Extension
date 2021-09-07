@@ -25,5 +25,27 @@ namespace ZangClass_Extension
             }
             return byteArray;
         }
+
+        /// <summary>
+        /// تبدیل عکس به باینری به وسیله آدرس عکس در حافظه سیستم
+        /// </summary>
+        /// <param name="fileName">آدرس تصویر</param>
+        /// <returns>خروجی باینری</returns>
+        public static byte[] ConvertImageToByte(string fileName)
+        {
+            byte[] buffer = null;
+            try
+            {
+                var fs = new FileStream(fileName, FileMode.Open);
+                buffer = new byte[fs.Length];
+                fs.Read(buffer, 0, Convert.ToInt32(fs.Length));
+                fs.Close();
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+            return buffer;
+        }
     }
 }
